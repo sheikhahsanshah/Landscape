@@ -1,0 +1,161 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container for responsiveness */
+.container-fluid {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stars Container */
+.stars-container {
+    position: relative;
+    height: 66vh; /* Adjusted to cover upper two-thirds of the viewport */
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Popup Styling */
+.popup {
+    position: absolute;
+    background-image: url('p1.jpg'); /* Background image for the pop-up */
+    color: #fff; /* White text */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translate(-50%, -100%);
+    font-size: 14px;
+    width: 150px; /* Adjust as needed */
+    text-align: center;
+}
+
+/* Popup animation */
+.popup.show {
+    opacity: 1;
+    transform: translate(-50%, -120%);
+}
+
+/* Star Styling */
+.star {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    transform: translate(-50%, -50%);
+    animation: blink 2s infinite ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, cursor 0.3s ease;
+    cursor: pointer;
+}
+
+.star:hover {
+    animation: none; /* Stop blinking on hover */
+}
+
+/* Star Sizes */
+.big-star { width: 25px; height: 25px; }
+.medium-star { width: 20px; height: 20px; }
+.small-star { width: 10px; height: 10px; }
+.mini-star { width: 5px; height: 5px; }
+
+/* Blinking animation */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Hover effect with different colors */
+.big-star:hover { box-shadow: 0 0 50px #ff0000, 0 0 80px #ff7f50, 0 0 120px #ff4500, 0 0 150px #ff6347; transform: scale(1.5); }
+.medium-star:hover { box-shadow: 0 0 50px #00ff00, 0 0 80px #7fff00, 0 0 120px #32cd32, 0 0 150px #98fb98; transform: scale(1.5); }
+.small-star:hover { box-shadow: 0 0 50px #0000ff, 0 0 80px #1e90ff, 0 0 120px #00bfff, 0 0 150px #87cefa; transform: scale(1.5); }
+.mini-star:hover { box-shadow: 0 0 30px #ffffff, 0 0 50px #ffffff, 0 0 70px #ffffff; transform: scale(1.5); }
+
+/* Star colors */
+.big-star { background: radial-gradient(circle, rgb(232, 239, 127) 0%, rgba(255,215,0,0) 70%); }
+.medium-star { background: radial-gradient(circle, rgba(135,206,250,1) 0%, rgba(135,206,250,0) 70%); }
+.small-star { background: radial-gradient(circle, rgba(238,130,238,1) 0%, rgba(238,130,238,0) 70%); }
+.mini-star { background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%); }
+
+/* Full Moon Styling with White Color and Glow */
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.5), 0 0 90px rgba(255, 255, 255, 0.4), 0 0 120px rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+/* Sand Mountains Styling */
+.sand-mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #f4a460 100%);
+    z-index: 0;
+}
+
+.sand-mountains::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('desert.jpg') no-repeat center bottom;
+    background-size: cover;
+    clip-path: polygon(0% 50%, 10% 40%, 20% 50%, 30% 45%, 40% 50%, 50% 40%, 60% 50%, 70% 45%, 80% 50%, 90% 40%, 100% 50%, 100% 100%, 0% 100%);
+    z-index: 1;
+}
+
+.sand-mountains::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.3);
+    clip-path: polygon(0% 50%, 10% 40%, 20% 50%, 30% 45%, 40% 50%, 50% 40%, 60% 50%, 70% 45%, 80% 50%, 90% 40%, 100% 50%, 100% 100%, 0% 100%);
+    z-index: 2;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .moon {
+        width: 100px;
+        height: 100px;
+        top: 5%;
+        right: 10%;
+    }
+    .popup {
+        width: 120px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .moon {
+        width: 80px;
+        height: 80px;
+        top: 5%;
+        right: 5%;
+    }
+    .popup {
+        width: 100px;
+        font-size: 10px;
+    }
+}
